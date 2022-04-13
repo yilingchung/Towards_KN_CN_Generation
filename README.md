@@ -55,8 +55,10 @@ We use transformer
 
 ### 3. Retrieve relevant knowledge
  for each entry using Solr by running retrieve_KN.py
+ 
 [Solr](https://solr.apache.org/) is used to index articles in knowledge repository and retrieve relevant knowledge given a query. 
 
+Some solr commands:
 - Launch solr:
 	run `solr-8.8.1/bin/solr restart`
 	or `./bin/solr restart`
