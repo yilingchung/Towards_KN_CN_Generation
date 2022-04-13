@@ -76,3 +76,21 @@ Knowledge retrieval
 * [XNLG](https://github.com/CZWin32768/XNLG) 
 * [Candela](https://github.com/XinyuHua/arggen-candela)
 
+## Citation
+
+```bibtex
+@inproceedings{chung-etal-2021-towards,
+    title = "Towards Knowledge-Grounded Counter Narrative Generation for Hate Speech",
+    author = "Chung, Yi-Ling  and
+      Tekiro{\u{g}}lu, Serra Sinem  and
+      Guerini, Marco",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021",
+    month = aug,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.findings-acl.79",
+    doi = "10.18653/v1/2021.findings-acl.79",
+    pages = "899--914",
+}
+```
