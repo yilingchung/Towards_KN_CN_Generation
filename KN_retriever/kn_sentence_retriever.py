@@ -35,7 +35,6 @@ def custom_seg(doc):
         prev = token.text
     return doc
 
-
 def get_rouge(sent, hskpcn, metric_type):
     """get ROUGE1 ('rouge1' or 'rougeL) -F1 between selected sentences and 'HS+KP+CN' """
     scorer_rouge = rouge_scorer.RougeScorer([metric_type], use_stemmer=True)
@@ -60,7 +59,6 @@ def top_n_important_sentence_selector(doc, hskpcn, n, metric_type):
         if ele[1] not in top_n_sentences and i < (n + 1):
             top_n_sentences += ele[1] + " <EOS> "
             i += 1
-    #    top_n_important_sentences = [ ele[1] for ele in top_n_important_sentences ]
     return top_n_sentences
 
 def clean_text(text):
