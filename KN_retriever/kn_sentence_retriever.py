@@ -108,7 +108,6 @@ def sentence_spliter(text):
     sentence_list = []
     for sentence in doc.sents:
         sentence_list.append(sentence.text)
-        # print(sentence.text)
     return sentence_list
 
 def sentence_spliter_v2(docs):
@@ -116,16 +115,14 @@ def sentence_spliter_v2(docs):
     sentence_list = []
     print("docs: ", docs)
     for doc in nlp.pipe(docs, batch_size=100):
-        print("doc", doc)
         sentence_list.extend(sent.text for sent in doc.sents)
-    print(sentence_list)
 
 if __name__ == '__main__':
 
     args = parse_args()
 
     nlp = spacy.load('en')
-    nlp.max_length = 1500000  # or whatever value > 1000000, as long as you don't run out of RAM
+    nlp.max_length = 1500000  # or whatever value, as long as you don't run out of RAM
     boundary = re.compile('^[0-9]$')
     nlp.add_pipe(custom_seg, before='parser')
     df = pandas.read_excel(args.input_path)
