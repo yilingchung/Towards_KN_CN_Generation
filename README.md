@@ -19,7 +19,7 @@ transformers
 
 ## Knowledge Retrieval Module
 
-Under ```./KN_retriever/data/KN_CONAN_data```, we provide final CONAN dataset paired with corresponding silver knowledge. If you wish to prepare your own knowledge repository, check the steps below. Otherwise, skip this section.
+Under ```./KN_retriever/data/KN_CONAN_final_data```, we provide final CONAN dataset paired with corresponding silver knowledge. If you wish to prepare your own knowledge repository, check the steps below. Otherwise, skip this section.
 
 1. Download CONAN dataset and knowledge repository 
 2. Prepare queries
@@ -73,8 +73,8 @@ Check [this tutorial](https://solr.apache.org/guide/8_10/solr-tutorial.html) on 
 
 ### 4. Select knowledge sentences
 
-Apply knowledge sentence selector to get the top-N knowledge sentences and save it in a single file, 1 entry per line, using KN_sentence_retriever.py
-* Extract top-5 sentences from 6 and add them in CONAN data using KN_sentence_to dataframe.py
+* Apply knowledge sentence selector to get the top-N knowledge sentences and save it in a single file, 1 entry per line, run [kn_sentence_retriever.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/kn_sentence_retriever.py)
+* Extract top-5 sentences from 6 and add them in CONAN data using kn_sentence_to dataframe.py
 
 ## Counter Narrative Generation Module
 * Transformer
