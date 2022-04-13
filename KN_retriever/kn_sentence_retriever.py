@@ -1,14 +1,13 @@
+# From documents retrieved for each pair of HS/CN in the dataset as input.
+# Compute top N sentences related to HS and CN keyphrases, using RougeL as measures.
+# The output is a txt file with each line stored the sorted top N sentences relevant to a pair of HS/CN.
+
 import spacy
 import re
 import json
 import pandas
 import argparse
 from rouge_score import rouge_scorer
-
-# From documents retrieved for each pair of HS/CN in the dataset as input,
-# compute top N sentences related to HS and CN keyphrases, using RougeL as measures.
-# The output is a txt file with each line stored the sorted top N sentences relevant to a pair
-# of HS/CN
 
 endings = (".", "!", "?", '."', '!"', '?"', '.”', '?”', '!”')
 false_starts = ("*", ":", "'", "”", "：", "|", "\\", ";", "-", "(", ")", ",")  #
