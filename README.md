@@ -45,16 +45,16 @@ We use the following datasets for creating relevant knowledge.
 
 We use [Keyphrase Digger](https://github.com/dhfbk/KD) to extract keyphrases queries for both hate speech and counter narratives in CONAN.
 
-* 1. create a txt file for each HS and CN in CONAN, run "create_text_file.py"
+* 1. create a txt file for each HS and CN in CONAN, run [create_text_file.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/create_text_file.py)
 * 2. Make sure that the resulting files from i. are stored under ```KD/KD-Runner/target``` in your keyphrase Digger reporsitory
-* 3. Retrieve keyphrases for HS and CN using Keyphrase Digger, store "./KN_retriever/run_kd.sh" under ```KD/KD-Runner/target``` and run it
-* 4. Extract retrieved keyphrases from iii. and add them in CONAN data using extract_KP_from_file.py
+* 3. Retrieve keyphrases for HS and CN using Keyphrase Digger, store [run_kd.sh](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/run_kd.sh) under ```KD/KD-Runner/target``` and run it
+* 4. Extract retrieved keyphrases from iii. and add them in CONAN data using [extract_keyphrase.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/extract_keyphrase.py)
 
 #### 2.2. Query generation
 We use transformer
 
 ### 3. Retrieve relevant knowledge
- for each entry using Solr by running retrieve_KN.py
+Retrieve relevant knowledge using Solr, run [retrieve_kn.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/retrieve_kn.py)
  
 [Solr](https://solr.apache.org/) is used to index articles in knowledge repository and retrieve relevant knowledge given a query. 
 
