@@ -11,10 +11,11 @@ This work aims at generating knowledge-bound counter narratives, using 2 moudles
 #### Requirements:
 ```
 Java 1.8+
-Python
-Keyphrase digger
 Solr
+Keyphrase digger
+
 transformers
+rouge_score
 ```
 
 ## Knowledge Retrieval Module
