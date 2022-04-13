@@ -1,7 +1,12 @@
 Towards Knowledge-Grounded Counter Narrative Generation for Hate Speech
 ====================
 
-This work aims at generating knowledge-bound counter narratives.
+
+![pipeline_new](https://user-images.githubusercontent.com/9419045/163219818-9b290d44-7597-4b66-a135-9479650b8c6e.png)
+
+
+
+This work aims at generating knowledge-bound counter narratives, using 2 moudles, knowledge retrieval module and counter narrative generation module.
 
 #### Requirements:
 Java 1.8+
