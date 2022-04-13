@@ -9,11 +9,13 @@ Towards Knowledge-Grounded Counter Narrative Generation for Hate Speech
 This work aims at generating knowledge-bound counter narratives, using 2 moudles, knowledge retrieval module and counter narrative generation module.
 
 #### Requirements:
+```
 Java 1.8+
 Python
 Keyphrase digger
 Solr
 transformers
+```
 
 ## Knowledge Retrieval Module
 
