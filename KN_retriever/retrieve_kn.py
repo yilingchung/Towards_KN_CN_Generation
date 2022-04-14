@@ -1,7 +1,7 @@
+"""retrieve relevant documents using keyphrases as queries with Solr"""
+
 import argparse, pandas, json
 import urllib.request
-
-"""retrieve relevant documents using keyphrases as queries with Solr"""
 
 def parse_args():
     """Parses Command Line Args"""
