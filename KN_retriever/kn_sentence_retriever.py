@@ -24,8 +24,16 @@ def parse_args():
     parser_args = parser.parse_args()
     return parser_args
 
+def clean_text(text):
+    t = text.replace("’", "'").replace("“", "").replace("”", "").replace("@", "").replace("\n", "").replace("–", "-")
+    t = t.replace("‑", "-").replace("…", "...").replace("•", "").replace("‘", "'")
+    t = t.replace("â\x80\x99", "").replace("â\x80\x9d", '"')
+    t = t.replace("<unk>", "")
+    t = t.replace("@-@", "-").replace("@,@", ",").replace("@.@", ".").strip()
+    t = bytes(t, 'utf-8').decode('utf-8', 'ignore')
+    return " ".join(t.split())
+
 def custom_seg(doc):
-    # print(doc)
     prev = doc[0].text
     length = len(doc)
     for index, token in enumerate(doc):
@@ -51,7 +59,7 @@ def top_n_important_sentence_selector(doc, hskpcn, n, metric_type):
                 score.append(-10000)
         else:
             score.append(-10000)
-    top_n_important_sentences = sorted(zip(score, doc), reverse=True)[:n]  # could be greedily maximizing the ROUGE1-F1 between selected sentences
+    top_n_important_sentences = sorted(zip(score, doc), reverse=True)[:n]  # can be greedily maximizing the ROUGE1-F1 between selected sentences
     top_n_sentences = ""
     i = 0
     for ele in top_n_important_sentences:
@@ -60,17 +68,8 @@ def top_n_important_sentence_selector(doc, hskpcn, n, metric_type):
             i += 1
     return top_n_sentences
 
-def clean_text(text):
-    t = text.replace("’", "'").replace("“", "").replace("”", "").replace("@", "").replace("\n", "").replace("–", "-").replace("‑", "-").replace("…", "...").replace("•", "").replace("‘", "'")
-    t = t.replace("â\x80\x99", "").replace("â\x80\x9d", '"')
-    t = t.replace("<unk>", "")
-    t = t.replace("@-@", "-").replace("@,@", ",").replace("@.@", ".").strip()
-    t = bytes(t, 'utf-8').decode('utf-8', 'ignore')
-    return " ".join(t.split())
-
-def write_solr_docs(df, knowl_path, kp_type, num_document_selector, num_setence_selector, metric_type):
+def main(df, knowl_path, kp_type, num_document_selector, num_setence_selector, metric_type):
     f_Know = open(knowl_path, "w")
-    doc_know = {}
     for index, row in df.iterrows():
         doc_text = ""
         if str(row['num_HS_keyword']) != "0" and str(row['num_CN_keyword']) != "0":
@@ -96,7 +95,6 @@ def write_solr_docs(df, knowl_path, kp_type, num_document_selector, num_setence_
                 sentences_in_all_knowl += set(sentence_spliter(text))
             topn = top_n_important_sentence_selector(sentences_in_all_knowl, query, num_setence_selector, metric_type)
             doc_text += topn
-            doc_know[row['cn_id']] = doc_text
             f_Know.write(str(doc_text) + "\n")
             f.close()
         else:
@@ -110,13 +108,6 @@ def sentence_spliter(text):
         sentence_list.append(sentence.text)
     return sentence_list
 
-def sentence_spliter_v2(docs):
-    # sentencizer = nlp.add_pipe("sentencizer")
-    sentence_list = []
-    print("docs: ", docs)
-    for doc in nlp.pipe(docs, batch_size=100):
-        sentence_list.extend(sent.text for sent in doc.sents)
-
 if __name__ == '__main__':
 
     args = parse_args()
@@ -126,5 +117,5 @@ if __name__ == '__main__':
     boundary = re.compile('^[0-9]$')
     nlp.add_pipe(custom_seg, before='parser')
     df = pandas.read_excel(args.input_path)
-    write_solr_docs(df, args.write_knowl_path, args.kp_type, args.num_document_selector, args.num_setence_selector, args.metric_type)
+    main(df, args.write_knowl_path, args.kp_type, args.num_document_selector, args.num_setence_selector, args.metric_type)
 
