@@ -1,6 +1,8 @@
-# From documents retrieved for each pair of HS/CN in the dataset as input.
-# Compute top N sentences related to HS and CN keyphrases, using RougeL as measures.
-# The output is a txt file with each line stored the sorted top N sentences relevant to a pair of HS/CN.
+"""
+From documents retrieved for each pair of HS/CN in the dataset as input.
+Compute top N sentences related to HS and CN keyphrases, using RougeL as measures.
+The output is a txt file with each line stored the sorted top N sentences relevant to a pair of HS/CN.
+"""
 
 import spacy
 import re
