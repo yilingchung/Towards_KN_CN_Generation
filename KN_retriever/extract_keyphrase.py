@@ -1,7 +1,6 @@
-import pandas
-
 """read keyphrases returned from KeyphraseDigger to csv"""
 
+import pandas
 
 def extract_keyphrase(directory, cn_id):
     df_kp = pandas.read_csv(directory+str(cn_id)+".tsv", sep="\t")
