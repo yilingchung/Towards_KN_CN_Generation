@@ -1,7 +1,7 @@
-import pandas
-
 """This script prepares files to run keyphrase digger over.
 It creates a txt file for each hate speech and counter narrative in CONAN."""
+
+import pandas
 
 def create_txt(output_directory, text, id):
     with open(output_directory+str(id)+".txt", "w") as f:
