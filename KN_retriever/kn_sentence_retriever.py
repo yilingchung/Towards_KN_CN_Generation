@@ -14,13 +14,13 @@ false_starts = ("*", ":", "'", "”", "：", "|", "\\", ";", "-", "(", ")", ",")
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_path', type=str, default="Yiling_CONAN_multitarget_v9_copy_hscnkp_retrieved.xlsx")
-    parser.add_argument('--num_setence_selector', type=int, default=40)  # number of setence_selected
-    parser.add_argument('--num_document_selector', type=int, default=25)  # number of setence_selected
+    parser.add_argument('--input_path', type=str, default="CONAN_hscnkp.csv")
+    parser.add_argument('--num_setence_selector', type=int, default=40, help='number of setence to be selected')
+    parser.add_argument('--num_document_selector', type=int, default=25, help='number of document to be selected')
     parser.add_argument('--with_content', default=False)
     parser.add_argument('--metric_type', type=str, default='rougeL', help="'rougeL' or 'rouge1'")
     parser.add_argument('--kp_type', type=str, default='keyphrase', help="'keyphrase', 'hscn")
-    parser.add_argument('--write_knowl_path', type=str, default="retrieved_KN_sentence/top10_KN_sentences_hscnkp.txt")
+    parser.add_argument('--write_knowl_path', type=str, default="retrieved_KN_sentence/top40_KN_sentences_hscnkp.txt")
     parser_args = parser.parse_args()
     return parser_args
 
@@ -116,6 +116,6 @@ if __name__ == '__main__':
     nlp.max_length = 1500000  # or whatever value, as long as you don't run out of RAM
     boundary = re.compile('^[0-9]$')
     nlp.add_pipe(custom_seg, before='parser')
-    df = pandas.read_excel(args.input_path)
+    df = pandas.read_csv(args.input_path)
     main(df, args.write_knowl_path, args.kp_type, args.num_document_selector, args.num_setence_selector, args.metric_type)
 
