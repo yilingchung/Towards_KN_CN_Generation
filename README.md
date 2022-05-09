@@ -79,7 +79,7 @@ Check [this tutorial](https://solr.apache.org/guide/8_10/solr-tutorial.html) on 
 
 ## Counter Narrative Generation Module
 * Transformer
-* GPT2 (check [CS generation](https://github.com/yilingchung/Towards_KN_CN_Generation/tree/main/CS%20generation))
+* GPT2 (check [CN_generation](https://github.com/yilingchung/Towards_KN_CN_Generation/tree/main/CN_generation))
 * [XNLG](https://github.com/CZWin32768/XNLG) 
 * [Candela](https://github.com/XinyuHua/arggen-candela)
 
