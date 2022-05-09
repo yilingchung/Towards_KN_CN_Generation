@@ -14,7 +14,7 @@ def extract_keyphrase(directory, cn_id):
 
 
 if __name__ == '__main__':
-    df = pandas.read_csv("CONAN.csv")
+    df = pandas.read_csv("data/conan.csv")
     df[['CN_keyword', 'num_CN_keyword']] = df.apply(lambda x: extract_keyphrase("CN/", x['cn_id']), axis=1)
     df[['HS_keyword', 'num_HS_keyword']] = df.apply(lambda x: extract_keyphrase("HS/", x['cn_id']), axis=1)
-    df.to_csv("CONAN_hscnkp.csv", index=False)
+    df.to_csv("data/conan_hscnkp.csv", index=False)
