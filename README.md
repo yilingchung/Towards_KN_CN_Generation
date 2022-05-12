@@ -44,7 +44,7 @@ We use the following datasets for creating relevant knowledge.
 
 #### 2.1. Query extraction
 
-We use [Keyphrase Digger](https://github.com/dhfbk/KD) to extract keyphrases queries for both hate speech and counter narratives in CONAN.
+We use [Keyphrase Digger](https://github.com/dhfbk/KD) to extract keyphrase queries for both hate speech and counter narratives in CONAN.
 
 * 1. create a txt file for each HS and CN in CONAN, run [create_text_file.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/create_text_file.py)
 * 2. Make sure that the resulting files from i. are stored under ```KD/KD-Runner/target``` in your keyphrase Digger reporsitory after compiling
@@ -52,7 +52,7 @@ We use [Keyphrase Digger](https://github.com/dhfbk/KD) to extract keyphrases que
 * 4. Extract retrieved keyphrases from iii. and add them in CONAN data using [extract_keyphrase.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/extract_keyphrase.py)
 
 #### 2.2. Query generation
-We use transformer
+We use [transformer implementation](https://github.com/cuicaihao/examples-TF/blob/master/community/en/transformer_chatbot.ipynb) to train and generate keyphrase queries.
 
 ### 3. Retrieve relevant knowledge
 Retrieve relevant knowledge using Solr, run [retrieve_kn.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/retrieve_kn.py)
@@ -78,7 +78,7 @@ Check [this tutorial](https://solr.apache.org/guide/8_10/solr-tutorial.html) on 
 * Extract top-5 sentences from 6 and add them in CONAN data using [kn_sentence_to dataframe.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/kn_sentence_to%20dataframe.py)
 
 ## Counter Narrative Generation Module
-* Transformer
+* [Transformer]((https://github.com/cuicaihao/examples-TF/blob/master/community/en/transformer_chatbot.ipynb))
 * GPT2 (check [CN_generation](https://github.com/yilingchung/Towards_KN_CN_Generation/tree/main/CN_generation))
 * [XNLG](https://github.com/CZWin32768/XNLG) 
 * [Candela](https://github.com/XinyuHua/arggen-candela)
