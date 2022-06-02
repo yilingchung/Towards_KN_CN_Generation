@@ -1,5 +1,5 @@
 """
-Extract top-5 sentences from 6 and add them to CONAN data.
+Create train, valid and test data.
 """
 
 import pandas, linecache
