@@ -1,5 +1,5 @@
 """
-Extract top-5 sentences from 6 and add them to CONAN data.
+Extract top-5 knowldge sentences and add them to CONAN data.
 """
 
 import pandas, linecache
@@ -9,8 +9,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Retrieve knowledge articles from solr")
     parser.add_argument('--data_split', type=str, default="train", help='train, valid, test')
     parser.add_argument('--kn_dir', type=str, default="retrieved_KN_sentence/top40_KN_sentences_first25_doc_hscnkp.txt", help='directory to knowledge file')
-    parser.add_argument('--input_filename', type=str, default = "CONAN_hscnkp.csv", help = "help='file name for input data")
-    parser.add_argument('--output_filename', type=str, default="CONAN_hscnkp_kn_retrieved.csv", help='file name for output data')
+    parser.add_argument('--input_filename', type=str, default = "data/conan_hscnkp.csv", help = "help='file name for input data")
+    parser.add_argument('--output_filename', type=str, default="data/conan_hscnkp_kn_retrieved.csv", help='file name for output data')
     parser.add_argument('--num_setence', type=int, default=5, help='number of setence to be selected')
     parser_args = parser.parse_args()
     return parser_args
