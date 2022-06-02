@@ -14,6 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 """ Conditional text generation with the auto-regressive models of the library (GPT/GPT-2/CTRL/Transformer-XL/XLNet)
 """
 
@@ -302,14 +303,12 @@ def main():
                 print("HS:", prompt_text)
                 print("CN:", text.replace(prompt_text, ""))
 
-                # print(total_sequence)
-
-            # print(text)
             output_file.write("====== New Entry======" + "\n")
             output_file.write(text + "\n")
 
     return generated_sequences
 
-
 if __name__ == "__main__":
     main()
+    
+    
