@@ -74,10 +74,11 @@ Check [this tutorial](https://solr.apache.org/guide/8_10/solr-tutorial.html) on 
 
 ### 4. Select knowledge sentences
 
-Apply knowledge sentence selector to get the top-N knowledge sentences and save it in a single file, 1 entry per line, run [kn_sentence_retriever.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/kn_sentence_retriever.py)
+1. Apply knowledge sentence selector to get the top-N knowledge sentences and save it in a single file, 1 entry per line, run [kn_sentence_retriever.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/kn_sentence_retriever.py)
+2. Create train, valid, and test data, run [create_modelling_data.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/create_modelling_data.py).
 
 ## Counter Narrative Generation Module
-* [Transformer]((https://github.com/cuicaihao/examples-TF/blob/master/community/en/transformer_chatbot.ipynb))
+* [Transformer](https://github.com/cuicaihao/examples-TF/blob/master/community/en/transformer_chatbot.ipynb)
 * GPT2 (check [CN_generation](https://github.com/yilingchung/Towards_KN_CN_Generation/tree/main/CN_generation))
 * [XNLG](https://github.com/CZWin32768/XNLG) 
 * [Candela](https://github.com/XinyuHua/arggen-candela)
