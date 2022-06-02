@@ -48,7 +48,7 @@ We use [Keyphrase Digger](https://github.com/dhfbk/KD) to extract keyphrase quer
 
 * 1. create a txt file for each HS and CN in CONAN, run [create_text_file.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/create_text_file.py)
 * 2. Make sure that the resulting files from i. are stored under ```KD/KD-Runner/target``` in your keyphrase Digger reporsitory after compiling
-* 3. Retrieve keyphrases for HS and CN using Keyphrase Digger, store [run_kd.sh](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/run_kd.sh) under ```KD/KD-Runner/target``` and run it
+* 3. Retrieve keyphrases for HS and CN using Keyphrase Digger, store [run_kd.sh](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/run_kd.sh) under ```KD/KD-Runner/target``` and run ```./run_kd.sh``` under ```KD/KD-Runner/target```
 * 4. Extract retrieved keyphrases from iii. and add them in CONAN data using [extract_keyphrase.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/extract_keyphrase.py)
 
 #### 2.2. Query generation
