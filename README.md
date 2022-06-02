@@ -20,7 +20,7 @@ rouge_score
 
 ## Knowledge Retrieval Module
 
-Under ```./KN_retriever/data/KN_CONAN_final_data```, we provide final CONAN dataset paired with corresponding silver knowledge. If you wish to prepare your own knowledge repository, check the steps below. Otherwise, skip this section.
+Under ```[./KN_retriever/data/KN_CONAN_final_data](https://github.com/yilingchung/Towards_KN_CN_Generation/tree/main/KN_retriever/data/KN_CONAN_final_data)```, we provide final CONAN dataset paired with corresponding silver knowledge. If you wish to prepare your own knowledge repository, check the steps below. Otherwise, skip this section.
 
 1. Download CONAN dataset and knowledge repository 
 2. Prepare queries
