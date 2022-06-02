@@ -1,8 +1,6 @@
-"""
-From documents retrieved for each pair of HS/CN in the dataset as input.
-Compute top N sentences related to HS and CN keyphrases, using RougeL as measures.
-The output is a txt file with each line stored the sorted top N sentences relevant to a pair of HS/CN.
-"""
+# From documents retrieved for each pair of HS/CN in the dataset as input.
+# Compute top N sentences related to HS and CN keyphrases, using RougeL as measures.
+# The output is a txt and a jsonl file with each line stored the sorted top N sentences relevant to a pair of HS/CN.
 
 import spacy
 import re
@@ -16,13 +14,13 @@ false_starts = ("*", ":", "'", "”", "：", "|", "\\", ";", "-", "(", ")", ",")
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_path', type=str, default="CONAN_hscnkp.csv")
-    parser.add_argument('--num_setence_selector', type=int, default=40, help='number of setence to be selected')
+    parser.add_argument('--input_path', type=str, default="data/conan_hscnkp.csv")
+    parser.add_argument('--num_setence_selector', type=int, default=5, help='number of setence to be selected')
     parser.add_argument('--num_document_selector', type=int, default=25, help='number of document to be selected')
-    parser.add_argument('--with_content', default=False)
     parser.add_argument('--metric_type', type=str, default='rougeL', help="'rougeL' or 'rouge1'")
     parser.add_argument('--kp_type', type=str, default='keyphrase', help="'keyphrase', 'hscn")
-    parser.add_argument('--write_knowl_path', type=str, default="retrieved_KN_sentence/top40_KN_sentences_hscnkp.txt")
+    parser.add_argument('--write_knowl_path', type=str, default="retrieved_KN_sentence/hscnkp")
+    parser.add_argument('--outputfile', type=str, default="data/conan_hscnkp_kn.csv")
     parser_args = parser.parse_args()
     return parser_args
 
@@ -61,7 +59,7 @@ def top_n_important_sentence_selector(doc, hskpcn, n, metric_type):
                 score.append(-10000)
         else:
             score.append(-10000)
-    top_n_important_sentences = sorted(zip(score, doc), reverse=True)[:n]  # can be greedily maximizing the ROUGE1-F1 between selected sentences
+    top_n_important_sentences = sorted(zip(score, doc), reverse=True)[:n]  # could be greedily maximizing the ROUGE1-F1 between selected sentences
     top_n_sentences = ""
     i = 0
     for ele in top_n_important_sentences:
@@ -70,17 +68,23 @@ def top_n_important_sentence_selector(doc, hskpcn, n, metric_type):
             i += 1
     return top_n_sentences
 
-def main(df, knowl_path, kp_type, num_document_selector, num_setence_selector, metric_type):
-    f_Know = open(knowl_path, "w")
+def main(df, knowl_path, outputfile, kp_type, num_document_selector, num_setence_selector, metric_type):
+    f_Know = open(f'{knowl_path}.txt', "w")
+    josnl_outfile = open(f'{knowl_path}.jl', 'w')       
+    
     for index, row in df.iterrows():
+        doc_know = {}
+        doc_know['cn_id'] = row['cn_id']
+        doc_know['hatespeech'] = row['hateSpeech'] 
+        doc_know['counterSpeech'] = row['counterSpeech']
         doc_text = ""
-        if str(row['num_HS_keyword']) != "0" and str(row['num_CN_keyword']) != "0":
+        if len(row['hs_keyword']) > 0 and len(row['cn_keyword']) > 0
             if kp_type != "keyphrase":
                 query = row['hateSpeech'] + ", " + row['counterSpeech']
             else:
-                query = row['HS_keyword'] + row['CN_keyword']
+                query = row['hs_keyword'] + row['cn_keyword']
 
-            with open('retrieved_KN/'+str(row['cn_id'])+'json') as f:
+            with open('retrieved_KN/'+str(row['cn_id'])+'.json') as f:
                 data = json.load(f)
             knowl = ""
             sentences_in_all_knowl = []
@@ -101,7 +105,13 @@ def main(df, knowl_path, kp_type, num_document_selector, num_setence_selector, m
             f.close()
         else:
             f_Know.write("\n")
+        doc_know['kn_sentence'] = doc_text
+        df.loc[index,'kn_sentence_hscnkp'] = doc_text
+        json.dump(doc_know, josnl_outfile)
+        josnl_outfile.write('\n')
+    df.to_csv(outputfile, index=False)
     f_Know.close()
+    josnl_outfile.close()
 
 def sentence_spliter(text):
     doc = nlp(text, disable=['ner'])  # , 'parser'
@@ -109,6 +119,7 @@ def sentence_spliter(text):
     for sentence in doc.sents:
         sentence_list.append(sentence.text)
     return sentence_list
+
 
 if __name__ == '__main__':
 
@@ -118,6 +129,7 @@ if __name__ == '__main__':
     nlp.max_length = 1500000  # or whatever value, as long as you don't run out of RAM
     boundary = re.compile('^[0-9]$')
     nlp.add_pipe(custom_seg, before='parser')
-    df = pandas.read_csv(args.input_path)
-    main(df, args.write_knowl_path, args.kp_type, args.num_document_selector, args.num_setence_selector, args.metric_type)
+    df = pandas.read_excel(args.input_path)
+    main(df, args.write_knowl_path, args.outputfile, args.kp_type, args.num_document_selector, args.num_setence_selector, args.metric_type)
 
+    
