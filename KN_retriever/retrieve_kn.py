@@ -90,5 +90,5 @@ if __name__ == '__main__':
     args = parse_args()
     df = pandas.read_csv(args.input_filename)
     # df = df[df['split'] == args.data_split]
-    df.apply(lambda x: main(x['num_HS_keyword'], x['num_CN_keyword'], x['HS_keyword'], x['CN_keyword'], x['generated_cn_keywords'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
+    df.apply(lambda x: main(x['num_hs_keyword'], x['num_cn_keyword'], x['hs_keyword'], x['cn_keyword'], x['generated_cn_keywords'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
     # df.to_csv(args.output_filename)
