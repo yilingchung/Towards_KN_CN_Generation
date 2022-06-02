@@ -74,8 +74,7 @@ Check [this tutorial](https://solr.apache.org/guide/8_10/solr-tutorial.html) on 
 
 ### 4. Select knowledge sentences
 
-* Apply knowledge sentence selector to get the top-N knowledge sentences and save it in a single file, 1 entry per line, run [kn_sentence_retriever.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/kn_sentence_retriever.py)
-* Extract top-5 sentences from 6 and add them in CONAN data using [kn_sentence_to dataframe.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/kn_sentence_to%20dataframe.py)
+Apply knowledge sentence selector to get the top-N knowledge sentences and save it in a single file, 1 entry per line, run [kn_sentence_retriever.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/kn_sentence_retriever.py)
 
 ## Counter Narrative Generation Module
 * [Transformer]((https://github.com/cuicaihao/examples-TF/blob/master/community/en/transformer_chatbot.ipynb))
