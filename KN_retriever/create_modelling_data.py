@@ -24,7 +24,7 @@ def main(df, train_filename, valid_filename, test_filename):
         if row['split'] = 'valid':
             valid_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + row['kn_sentence_hscnkp'] + " <CN> " + row[counterSpeech] + "\n")
         if row['split'] = 'test':
-            test_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + "\n")
+            test_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + row['kn_sentence_hscnkp'] + " <CN> " + "\n")
 
 if __name__ == '__main__':
 
