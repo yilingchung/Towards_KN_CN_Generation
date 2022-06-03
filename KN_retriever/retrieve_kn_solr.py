@@ -9,7 +9,7 @@ def parse_args():
     parser.add_argument('--data_split', type=str, default="train", help='train, valid, test')
     parser.add_argument('--output_dir', type=str, default="data/retrieved_KN_solr", help='directory to knowledge retrieved from solr')
     parser.add_argument('--input_filename', type=str, default = "data/conan_hscnkp_keyphrase.csv", help = "help='file name for input data")
-    parser.add_argument('--output_filename', type=str, default="data/conan_hscnkp_keyphrase_kn.csv", help='file name for output data')
+    parser.add_argument('--output_filename', type=str, default="data/conan_hscnkp_keyphrase_kn_num.csv", help='file name for output data')
     parser.add_argument('--kp_type', type=str, default="hscn", help='types of keyphrase: hs, gen, hsgen, hscn')
     parser_args = parser.parse_args()
     return parser_args
