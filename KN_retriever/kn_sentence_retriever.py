@@ -80,7 +80,6 @@ def main(df, knowl_path, outputfile, kp_type, num_document_selector, num_setence
         doc_know['counterSpeech'] = row['counterSpeech']
         doc_text = ""
         if row['num_doc_retrieved'] > 0:
-        # if len(row['hs_keyword']) > 0 and len(row['cn_keyword']) > 0:
             if kp_type != "keyphrase":
                 query = row['hateSpeech'] + ", " + row['counterSpeech']
             else:
