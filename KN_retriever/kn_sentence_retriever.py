@@ -127,7 +127,7 @@ if __name__ == '__main__':
     args = parse_args()
 
     nlp = spacy.load('en')
-    nlp.max_length = 1500000  # or whatever value, as long as you don't run out of RAM
+    nlp.max_length = 1500000
     boundary = re.compile('^[0-9]$')
     nlp.add_pipe(custom_seg, before='parser')
     df = pandas.read_excel(args.input_path)
