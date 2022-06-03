@@ -14,7 +14,7 @@ false_starts = ("*", ":", "'", "”", "：", "|", "\\", ";", "-", "(", ")", ",")
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_path', type=str, default="data/conan_hscnkp_retrieved.csv")
+    parser.add_argument('--input_path', type=str, default="data/conan_hscnkp_keyphrase_kn_num.csv")
     parser.add_argument('--num_setence_selector', type=int, default=5, help='number of setences to be selected')
     parser.add_argument('--num_document_selector', type=int, default=25, help='number of documents to be selected')
     parser.add_argument('--metric_type', type=str, default='rougeL', help="'rougeL' or 'rouge1'")
