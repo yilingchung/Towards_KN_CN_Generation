@@ -12,7 +12,7 @@ python run_language_modeling.py \
   --model_type gpt2 \
   --model_name_or_path gpt2_model \
   --do_train \
-  --train_data_file data/knowl_guided_gpt2_data/KN_HS_CN/gpt2_hscnkp_train_valid.txt \
+  --train_data_file data/hscnkp_train.txt \
   --line_by_line \
   --learning_rate 5e-5 \
   --num_train_epochs 3 \
@@ -28,7 +28,7 @@ For inferencing, please run ```run_generation_test_file.py``` over your test set
 python run_generation_test_file.py \
   --model_type gpt2 \
   --model_name_or_path models/Qhscn_3E_run1 \
-  --test_file data/knowl_guided_gpt2_data/KN_HS_CN/gpt2_hscnkp_test_v2.txt \
+  --test_file data/hscnkp_test.txt \
   --out_file_path generation/Qhscn_3E_run1.txt \
   --length 50 \
   --p 0.9 \
