@@ -50,7 +50,6 @@ def main(hs_kp, cn_kp, cn_id, output_dir, kp_type):
         json_list = []
         hskp = process_keyphrase(hs_kp).split(", ")
         cnkp = process_keyphrase(cn_kp).split(", ")
-        genkp = ''
         boolean = "||"
         response = call_solr(hskp, cnkp, boolean, kp_type)
         while response['response']['numFound'] == 0:
