@@ -7,7 +7,7 @@ import pandas, linecache
 def parse_args():
     """Parses Command Line Args"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_filename', type=str, default = "conan_hscnkp_kn_retrieved.csv", help = "help='file name for input data")
+    parser.add_argument('--input_filename', type=str, default = "data/conan_hscnkp_top5kn.csv", help = "help='file name for input data")
     parser.add_argument('--train_filename', type=str, default="KN_CONAN_final_data/hscnkp_train.csv", help='file name for train data')
     parser.add_argument('--valid_filename', type=str, default="KN_CONAN_final_data/hscnkp_valid.csv", help='file name for valid data')
     parser.add_argument('--test_filename', type=str, default="KN_CONAN_final_data/hscnkp_test.csv", help='file name for test data')
