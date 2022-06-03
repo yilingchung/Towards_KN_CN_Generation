@@ -24,7 +24,7 @@ python run_language_modeling.py \
 ```
 
 ## Inferencing
-For inferencing, please run ```run_generation_test_file.py``` over your test set. This script is slightly modified based on the implementation [run_generation.py](https://github.com/huggingface/transformers/tree/v4.3.0.rc1/examples/text-generation).
+For inferencing, please run [```run_generation_test_file.py```](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/CN_generation/run_generation_test_file.py) over your test set. This script is slightly modified based on the implementation [run_generation.py](https://github.com/huggingface/transformers/tree/v4.3.0.rc1/examples/text-generation).
 
 ```
 python run_generation_test_file.py \
