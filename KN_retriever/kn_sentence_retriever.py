@@ -85,7 +85,7 @@ def main(df, knowl_path, outputfile, kp_type, num_document_selector, num_setence
             else:
                 query = row['hs_keyword'] + row['cn_keyword']
 
-            with open('data/retrieved_KN/'+str(row['cn_id'])+'.json') as f:
+            with open('data/retrieved_KN_solr/'+str(row['cn_id'])+'.json') as f:
                 data = json.load(f)
             knowl = ""
             sentences_in_all_knowl = []
