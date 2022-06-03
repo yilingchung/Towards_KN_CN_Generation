@@ -39,6 +39,7 @@ def process_keyphrase(text):
     # clean special characters in keyphrases
     t = text.replace("'", "").replace("#", "").replace("@", "").replace("!", "")
     t = t.replace("’", "'").replace("“", "").replace("”", "").replace("?","?")
+    t = t.replace("\xe8","e").replace("è","e")
     return t
 
 def main(hs_kp, cn_kp, hs, cs, cn_id, output_dir, kp_type):
