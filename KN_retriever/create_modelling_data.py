@@ -6,7 +6,7 @@ import pandas, linecache
 
 def parse_args():
     """Parses Command Line Args"""
-    parser = argparse.ArgumentParser(description="Retrieve knowledge articles from solr")
+    parser = argparse.ArgumentParser()
     parser.add_argument('--input_filename', type=str, default = "conan_hscnkp_kn_retrieved.csv", help = "help='file name for input data")
     parser.add_argument('--train_filename', type=str, default="KN_CONAN_final_data/hscnkp_train.csv", help='file name for train data')
     parser.add_argument('--valid_filename', type=str, default="KN_CONAN_final_data/hscnkp_valid.csv", help='file name for valid data')
