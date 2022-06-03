@@ -13,6 +13,8 @@ python run_language_modeling.py \
   --model_name_or_path gpt2_model \
   --do_train \
   --train_data_file data/hscnkp_train.txt \
+  --do_eval \
+  --eval_data_file data/hscnkp_valid.txt \
   --line_by_line \
   --learning_rate 5e-5 \
   --num_train_epochs 3 \
