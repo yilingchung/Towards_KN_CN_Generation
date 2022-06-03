@@ -2,15 +2,17 @@
 Create train, valid and test data.
 """
 
-import pandas, linecache
+import argparse
+import pandas
+import linecache
 
 def parse_args():
     """Parses Command Line Args"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--input_filename', type=str, default = "data/conan_hscnkp_top5kn.csv", help = "help='file name for input data")
-    parser.add_argument('--train_filename', type=str, default="KN_CONAN_final_data/hscnkp_train.csv", help='file name for train data')
-    parser.add_argument('--valid_filename', type=str, default="KN_CONAN_final_data/hscnkp_valid.csv", help='file name for valid data')
-    parser.add_argument('--test_filename', type=str, default="KN_CONAN_final_data/hscnkp_test.csv", help='file name for test data')
+    parser.add_argument('--train_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_train.csv", help='file name for train data')
+    parser.add_argument('--valid_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_valid.csv", help='file name for valid data')
+    parser.add_argument('--test_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_test.csv", help='file name for test data')
     parser_args = parser.parse_args()
     return parser_args
 
@@ -19,11 +21,11 @@ def main(df, train_filename, valid_filename, test_filename):
     valid_file = open(f'{valid_filename}.txt', "w")
     test_file = open(f'{test_filename}.txt', "w")
     for index, row in df.iterrows():
-        if row['split'] = 'train':
-            train_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + row['kn_sentence_hscnkp'] + " <CN> " + row[counterSpeech] + "\n")
-        if row['split'] = 'valid':
-            valid_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + row['kn_sentence_hscnkp'] + " <CN> " + row[counterSpeech] + "\n")
-        if row['split'] = 'test':
+        if row['split'] == 'train':
+            train_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + row['kn_sentence_hscnkp'] + " <CN> " + row['counterSpeech'] + "\n")
+        if row['split'] == 'valid':
+            valid_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + row['kn_sentence_hscnkp'] + " <CN> " + row['counterSpeech'] + "\n")
+        if row['split'] == 'test':
             test_file.write("<HS> " + row['hateSpeech'] + " <knowl> " + row['kn_sentence_hscnkp'] + " <CN> " + "\n")
 
 if __name__ == '__main__':
@@ -31,6 +33,6 @@ if __name__ == '__main__':
     args = parse_args()
     
     df = pandas.read_csv(args.input_filename)
-    df = df[len(df['kn_sentence_hscnkp']) > 0]
+    df = df[df['num_doc_retrieved'] > 0]
     main(df, args.train_filename, args.valid_filename, args.test_filename)
 
