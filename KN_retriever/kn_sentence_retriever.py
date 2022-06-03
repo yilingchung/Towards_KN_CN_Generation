@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument('--num_document_selector', type=int, default=25, help='number of document to be selected')
     parser.add_argument('--metric_type', type=str, default='rougeL', help="'rougeL' or 'rouge1'")
     parser.add_argument('--kp_type', type=str, default='keyphrase', help="'keyphrase', 'hscn")
-    parser.add_argument('--write_knowl_path', type=str, default="retrieved_KN_sentence/hscnkp")
+    parser.add_argument('--write_knowl_path', type=str, default="data/retrieved_KN_sentence/hscnkp")
     parser.add_argument('--outputfile', type=str, default="data/conan_hscnkp_kn.csv")
     parser_args = parser.parse_args()
     return parser_args
