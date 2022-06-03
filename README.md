@@ -16,6 +16,7 @@ Keyphrase digger
 
 transformers
 rouge_score
+spaCy
 ```
 
 ## Knowledge Retrieval Module
