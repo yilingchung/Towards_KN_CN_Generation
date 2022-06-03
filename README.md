@@ -6,7 +6,7 @@ Towards Knowledge-Grounded Counter Narrative Generation for Hate Speech
 
 
 
-This work aims at generating knowledge-bound counter narratives, using 2 moudles, knowledge retrieval module and counter narrative generation module.
+This work aims at generating knowledge-bound counter narratives, using 2 modules, knowledge retrieval module and counter narrative generation module.
 
 #### Requirements:
 ```
