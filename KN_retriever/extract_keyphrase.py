@@ -18,4 +18,4 @@ if __name__ == '__main__':
     df = pandas.read_csv("data/conan.csv")
     df[['cn_keyword', 'num_cn_keyword']] = df.apply(lambda x: extract_kp("data/CN/", x['cn_id']), axis=1)
     df[['hs_keyword', 'num_hs_keyword']] = df.apply(lambda x: extract_kp("data/HS/", x['cn_id']), axis=1)
-    df.to_csv("data/conan_hscnkp.csv", index=False)
+    df.to_csv("data/conan_hscnkp_keyphrase.csv", index=False)
