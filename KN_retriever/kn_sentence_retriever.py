@@ -75,7 +75,7 @@ def main(df, knowl_path, outputfile, kp_type, num_document_selector, num_setence
     for index, row in df.iterrows():
         doc_know = {}
         doc_know['cn_id'] = row['cn_id']
-        doc_know['hatespeech'] = row['hateSpeech'] 
+        doc_know['hateSpeech'] = row['hateSpeech'] 
         doc_know['counterSpeech'] = row['counterSpeech']
         doc_text = ""
         if len(row['hs_keyword']) > 0 and len(row['cn_keyword']) > 0
