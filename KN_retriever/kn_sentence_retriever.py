@@ -70,9 +70,10 @@ def top_n_important_sentence_selector(doc, hskpcn, n, metric_type):
 
 def main(df, knowl_path, outputfile, kp_type, num_document_selector, num_setence_selector, metric_type):
     f_Know = open(f'{knowl_path}.txt', "w")
-    josnl_outfile = open(f'{knowl_path}.jl', 'w')       
+    josnl_outfile = open(f'{knowl_path}.jl', 'w')
+    df1 = df.astype({"hs_keyword": str, "cn_keyword": str})
     
-    for index, row in df.iterrows():
+    for index, row in df1.iterrows():
         print("Current id: ", row['cn_id'])
         doc_know = {}
         doc_know['cn_id'] = row['cn_id']
@@ -107,10 +108,10 @@ def main(df, knowl_path, outputfile, kp_type, num_document_selector, num_setence
         else:
             f_Know.write("\n")
         doc_know['kn_sentence'] = doc_text
-        df.loc[index,'kn_sentence_hscnkp'] = doc_text
+        df1.loc[index,'kn_sentence_hscnkp'] = doc_text
         json.dump(doc_know, josnl_outfile)
         josnl_outfile.write('\n')
-    df.to_csv(outputfile, index=False)
+    df1.to_csv(outputfile, index=False)
     f_Know.close()
     josnl_outfile.close()
 
