@@ -7,7 +7,7 @@ def parse_args():
     """Parses Command Line Args"""
     parser = argparse.ArgumentParser(description="Retrieve knowledge articles from solr")
     parser.add_argument('--data_split', type=str, default="train", help='train, valid, test')
-    parser.add_argument('--output_dir', type=str, default="retrieved_KN", help='directory to knowledge retrieved from solr')
+    parser.add_argument('--output_dir', type=str, default="data/retrieved_KN", help='directory to knowledge retrieved from solr')
     parser.add_argument('--input_filename', type=str, default = "data/conan_hscnkp.csv", help = "help='file name for input data")
     parser.add_argument('--output_filename', type=str, default="data/conan_hscnkp_retrieved.csv", help='file name for output data')
     parser.add_argument('--kp_type', type=str, default="hscn", help='types of keyphrase: hs, gen, hsgen, hscn')
@@ -43,7 +43,7 @@ def process_keyphrase(text):
 
 def main(hs_kp, cn_kp, cn_id, output_dir, kp_type):
     print("Current id: ", cn_id)
-    kn_output_path = f'{output_dir}/{str(id)}.json'
+    kn_output_path = f'{output_dir}/{cn_id}.json'
 
     # retrieve relevant document using keyphrases as queries with Solr
     if len(hs_kp) > 0 and len(cn_kp) > 0:
@@ -87,6 +87,7 @@ def main(hs_kp, cn_kp, cn_id, output_dir, kp_type):
 if __name__ == '__main__':
     args = parse_args()
     df = pandas.read_csv(args.input_filename)
+    df = df.astype({"hs_keyword": str, "cn_keyword": str})
     # df = df[df['split'] == args.data_split]
     # df.apply(lambda x: main(x['num_hs_keyword'], x['num_cn_keyword'], x['hs_keyword'], x['cn_keyword'], x['generated_cn_keywords'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
     df.apply(lambda x: main(x['hs_keyword'], x['cn_keyword'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
