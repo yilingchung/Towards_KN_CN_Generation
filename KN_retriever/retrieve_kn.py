@@ -41,7 +41,11 @@ def process_keyphrase(text):
     t = t.replace("’", "'").replace("“", "").replace("”", "").replace("?","?")
     return t
 
-def main(hs_kp, cn_kp, cn_id, output_dir, kp_type):
+def main(hs_kp, cn_kp, hs, cs, cn_id, output_dir, kp_type):
+
+    if len(cs.split()) < 10:
+        return 0
+
     print("Current id: ", cn_id)
     kn_output_path = f'{output_dir}/{cn_id}.json'
 
@@ -63,8 +67,8 @@ def main(hs_kp, cn_kp, cn_id, output_dir, kp_type):
             elif len(cnkp) > 0 and len(hskp) == 0:
                 cnkp.pop()
             else:
-                hskp = process_keyphrase(hs_kp).split(", ")
-                cnkp = process_keyphrase(cn_kp).split(", ")
+                hskp = hs
+                cnkp = cs
                 boolean = "||"
             response = call_solr(hskp, cnkp, boolean, kp_type)
             
@@ -81,15 +85,15 @@ def main(hs_kp, cn_kp, cn_id, output_dir, kp_type):
             json_list.append(element)
         with open(kn_output_path, 'w', encoding='utf-8') as f:
             json.dump(json_list, f)
-        # return response['response']['numFound']
+        return response['response']['numFound']
 
 if __name__ == '__main__':
     args = parse_args()
-    df = pandas.read_csv(args.input_filename)
+    df = pandas.read_csv(args.input_filename, encoding='utf8')
     df = df.astype({"hs_keyword": str, "cn_keyword": str})
     # df = df[df['split'] == args.data_split]
-    # df.apply(lambda x: main(x['num_hs_keyword'], x['num_cn_keyword'], x['hs_keyword'], x['cn_keyword'], x['generated_cn_keywords'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
-    df.apply(lambda x: main(x['hs_keyword'], x['cn_keyword'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
-    # df.to_csv(args.output_filename)
+    # df.apply(lambda x: main(x['hs_keyword'], x['cn_keyword'], x['generated_cn_keywords'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
+    df['num_doc_retrieved'] = df.apply(lambda x: main(x['hs_keyword'], x['cn_keyword'], x['hateSpeech'], x['counterSpeech'], x['cn_id'], args.output_dir, args.kp_type), axis=1)
+    
     
     
