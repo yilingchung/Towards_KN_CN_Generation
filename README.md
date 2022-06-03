@@ -55,7 +55,7 @@ We use [Keyphrase Digger](https://github.com/dhfbk/KD) to extract keyphrase quer
 We use [transformer implementation](https://github.com/cuicaihao/examples-TF/blob/master/community/en/transformer_chatbot.ipynb) to train and generate keyphrase queries.
 
 ### 3. Retrieve relevant knowledge
-Retrieve relevant knowledge using Solr, run [retrieve_kn.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/retrieve_kn.py)
+Retrieve relevant knowledge using Solr, run [retrieve_kn_solr.py]([https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/retrieve_kn.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/retrieve_kn_solr.py))
  
 [Solr](https://solr.apache.org/) is used to index articles in knowledge repository and retrieve relevant knowledge given a query. 
 
