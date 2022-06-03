@@ -31,5 +31,6 @@ if __name__ == '__main__':
     args = parse_args()
     
     df = pandas.read_csv(args.input_filename)
+    df = df[len(df['kn_sentence_hscnkp']) > 0]
     main(df, args.train_filename, args.valid_filename, args.test_filename)
 
