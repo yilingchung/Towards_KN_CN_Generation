@@ -31,7 +31,7 @@ python run_generation_test_file.py \
   --model_type gpt2 \
   --model_name_or_path models/Qhscn_3E_run1 \
   --test_file data/hscnkp_test.txt \
-  --out_file_path generation/Qhscn_3E_run1.txt \
+  --out_file_path generation/Qhscn_3E_run1_generated_data.txt \
   --length 50 \
   --p 0.9 \
   --num_return_sequences 1  
