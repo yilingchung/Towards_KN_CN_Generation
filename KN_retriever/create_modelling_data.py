@@ -10,9 +10,9 @@ def parse_args():
     """Parses Command Line Args"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--input_filename', type=str, default = "data/conan_hscnkp_top5kn.csv", help = "help='file name for input data")
-    parser.add_argument('--train_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_train.csv", help='file name for train data')
-    parser.add_argument('--valid_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_valid.csv", help='file name for valid data')
-    parser.add_argument('--test_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_test.csv", help='file name for test data')
+    parser.add_argument('--train_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_train", help='file name for train data')
+    parser.add_argument('--valid_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_valid", help='file name for valid data')
+    parser.add_argument('--test_filename', type=str, default="data/KN_CONAN_final_data/hscnkp_test", help='file name for test data')
     parser_args = parser.parse_args()
     return parser_args
 
