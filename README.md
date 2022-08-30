@@ -84,6 +84,10 @@ Check [this tutorial](https://solr.apache.org/guide/8_10/solr-tutorial.html) on 
 * [XNLG](https://github.com/CZWin32768/XNLG) 
 * [Candela](https://github.com/XinyuHua/arggen-candela)
 
+## Multi-domain Knowledge-grounded hate countering dataset
+
+The Gold Knowledge Test Set can be downloaded [here](https://github.com/marcoguerini/CONAN/tree/master/multitarget_KN_grounded_CN), containing hate speech, counter-narrative pairs coupled with relevant backgroud knowledge. It consists of 195 pairs covering multiple hate targets (islamophobia, misogyny, antisemitism, racism, and homophobia).
+
 ## Citation
 
 For more details on data partition procedure, please see our paper.
