@@ -48,8 +48,8 @@ We use the following datasets for creating relevant knowledge.
 We use [Keyphrase Digger](https://github.com/dhfbk/KD) to extract keyphrase queries for both hate speech and counter narratives in CONAN.
 
 * 1. create a txt file for each HS and CN in CONAN, run [create_text_file.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/create_text_file.py)
-* 2. Make sure that the resulting files from i. are stored under ```KD/KD-Runner/target``` in your keyphrase Digger reporsitory after compiling
-* 3. Retrieve keyphrases for HS and CN using Keyphrase Digger, store and run [```run_kd.sh```](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/run_kd.sh) under ```KD/KD-Runner/target```
+* 2. Make sure that the resulting files from i. are stored in the same directory of ```run_kd.sh``` and ```KD.jar``` from your keyphrase Digger repository after compiling (e.g. ```KD/KD-Runner/data/CN/``` if ```run_kd.sh``` and ```KD.jar``` are under ```KD/KD-Runner/```)
+* 3. Retrieve keyphrases for HS and CN using Keyphrase Digger, store and run [```run_kd.sh```](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/run_kd.sh).
 * 4. Extract retrieved keyphrases from iii. and add them in CONAN data using [extract_keyphrase.py](https://github.com/yilingchung/Towards_KN_CN_Generation/blob/main/KN_retriever/extract_keyphrase.py)
 
 #### 2.2. Query generation
